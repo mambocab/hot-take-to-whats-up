@@ -18,10 +18,11 @@
     var tweets = document.querySelectorAll(".tweet-text");
 
     [].slice.call(tweets).forEach(function(el){
-      var oldValue = el.innerHTML;
-      var newValue = oldValue.replace(/hot take:/i, whatsup() + ":");
-      if (newValue != oldValue) {
-        el.innerHTML = newValue;
+      // remove strong tags so text is replaced on the search page
+      var oldText = el.innerHTML.replace(/<\/?strong>/gi, "");
+      var newText = oldText.replace(/hot take:/i, whatsup() + ":");
+      if (newText != oldText) {
+        el.innerHTML = newText;
       }
     });
   }
